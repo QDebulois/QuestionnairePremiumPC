@@ -12,13 +12,13 @@ function renderSectionComponents({
   const handleChangecomps = (
     targCompCat: string,
     targetedcompName: string,
-    event: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLInputElement>
   ) =>
     setComponentsPc({
       ...componentsPc,
       [targCompCat]: componentsPc[targCompCat].map((comp) => {
         if (comp.name === targetedcompName) {
-          const value = Number(event.target.value);
+          const value = Number(e.target.value);
           comp.score = isNaN(value) ? 0 : value;
           return comp;
         }
@@ -29,11 +29,7 @@ function renderSectionComponents({
   const renderEachcomp = (comp: ComponentPc, compCat: string) => (
     <li key={comp.name}>
       <label className="text-sm float-right mt-1">
-        {comp.name} -{" "}
-        {["jeux", "resolution", "framerate", "qualite"].includes(compCat)
-          ? "valeur"
-          : "score"}
-        :
+        {comp.name} - Score:
         <input
           className="
               w-10 border-2 rounded-lg text-center

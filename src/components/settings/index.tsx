@@ -1,18 +1,30 @@
-import { ConfigPc, FormSettings, ComponentPc, ComponentCategories } from "@/data/data";
+import {
+  ConfigPc,
+  FormSettings,
+  ComponentPc,
+  ComponentCategories,
+} from "@/data/data";
 import renderSectionConfigs from "./sectionConfigs";
 import renderSectionComponents from "./sectionComponents";
 import renderSectionForms from "./sectionForm";
 
 interface ISettingProps {
   formSettings: FormSettings;
-  setFormSettings: (formSettings: FormSettings) => void ;
+  setFormSettings: (formSettings: FormSettings) => void;
   componentsPc: ComponentCategories;
-  setComponentsPc: (componentsPc: ComponentCategories) => void ;
+  setComponentsPc: (componentsPc: ComponentCategories) => void;
   configsPc: ConfigPc[];
-  setConfigsPc: (configsPc: ConfigPc[]) => void ;
+  setConfigsPc: (configsPc: ConfigPc[]) => void;
 }
 
-function Settings({ formSettings, setFormSettings, componentsPc, setComponentsPc, configsPc, setConfigsPc }: ISettingProps) {
+function Settings({
+  formSettings,
+  setFormSettings,
+  componentsPc,
+  setComponentsPc,
+  configsPc,
+  setConfigsPc,
+}: ISettingProps) {
   return (
     <section className="flex justify-around">
       <div

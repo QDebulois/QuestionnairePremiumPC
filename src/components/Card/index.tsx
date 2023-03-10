@@ -4,11 +4,13 @@ import { Transition } from "@headlessui/react";
 
 
 interface ICardProps {
-  score: number;
+  scoreCPU: number;
+  scoreRAM: number;
+  scoreGPU: number;
   configPc: ConfigPc;
 }
 
-function Card({ score, configPc }: ICardProps) {
+function Card({ scoreCPU, scoreRAM, scoreGPU, configPc }: ICardProps) {
   return (
     <Transition
       key={configPc.name} // Oblige REACT a rerender car nouvel élément
@@ -39,10 +41,10 @@ function Card({ score, configPc }: ICardProps) {
             <h5 className="mb-2 text-2xl font-medium leading-tight text-center text-neutral-800">
               {configPc.name}
             </h5>
-            <div className="text-center">
-              <span className="text-center text-lg text-neutral-600 font-bold">
-                Score: <span className="text-orange-700">{score}</span>
-              </span>
+            <div className="flex justify-around text-center text-lg text-neutral-600 font-bold">
+              <div>CPU: <span className="text-orange-700">{scoreCPU}</span></div>
+              <div>RAM: <span className="text-orange-700">{scoreRAM}</span></div>
+              <div>GPU: <span className="text-orange-700">{scoreGPU}</span></div>
             </div>
             <div className="
               mb-6 p-2 text-lg text-neutral-600 text-left border-y-2 border-neutral-400"
