@@ -1,20 +1,23 @@
 import Image from "next/image";
+import { ReactNode } from "react";
 
 interface ITitleProps {
-  text: string;
+  children: ReactNode;
 }
 
-const Title = ({ text }: ITitleProps) => (
+const Title = ({ children }: ITitleProps) => (
   <section className="flex justify-around text-center">
-    <div className="
-      flex flex-row gap-3 border-4 rounded-md p-2
-    border-orange-500 bg-sky-900 bg-opacity-70"
+    <div
+      className="
+      flex flex-row gap-3 rounded-md border-4
+      border-orange-500 bg-sky-900 bg-opacity-70 p-2"
     >
       <Image src={"/logo.png"} width={60} height={60} alt={"Logo"} />
-      <h1 className="
-        font-['caxo'] my-auto text-4xl text-gray-200 border-b-4 border-orange-700"
+      <h1
+        className="
+        my-auto border-b-4 border-orange-700 font-['caxo'] text-4xl text-gray-200"
       >
-        {text}
+        {children}
       </h1>
     </div>
   </section>

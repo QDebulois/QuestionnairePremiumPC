@@ -28,12 +28,12 @@ function renderSectionComponents({
 
   const renderEachcomp = (comp: ComponentPc, compCat: string) => (
     <li key={comp.name}>
-      <label className="text-sm float-right mt-1">
+      <label className="float-right mt-1 text-sm">
         {comp.name} - Score:
         <input
           className="
-              w-10 border-2 rounded-lg text-center
-            border-sky-800 text-sm ml-1"
+              ml-1 w-10 rounded-lg border-2
+            border-sky-800 text-center text-sm"
           value={comp.score}
           onChange={(event) => handleChangecomps(compCat, comp.name, event)}
         />
@@ -45,12 +45,12 @@ function renderSectionComponents({
     <div key={compCat}>
       <h3
         className="
-          text-center text-orange-700 font-bold border-b-2 border-sky-800"
+          border-b-2 border-sky-800 text-center font-bold text-orange-700"
       >
         {compCat}
       </h3>
       <ul>
-        {Object.entries(componentsPc[compCat]).map(([_, comp]) =>
+        {Object.values(componentsPc[compCat]).map((comp) =>
           renderEachcomp(comp, compCat)
         )}
       </ul>
@@ -61,12 +61,12 @@ function renderSectionComponents({
     <section>
       <h2
         className="
-          text-center text-orange-700 font-bold
-          text-2xl border-b-2 border-slate-700 m-4"
+          m-4 border-b-2 border-slate-700
+          text-center text-2xl font-bold text-orange-700"
       >
         Configurations Composants
       </h2>
-      <div className="flex flex-row flex-wrap gap-6 w-3/4 m-auto justify-center">
+      <div className="m-auto flex w-3/4 flex-row flex-wrap justify-center gap-6">
         {Object.keys(componentsPc).map((category) =>
           renderEachcompCat(category)
         )}

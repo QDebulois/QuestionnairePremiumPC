@@ -9,7 +9,6 @@ function renderSectionForms({
   formSettings,
   setFormSettings,
 }: IRenderComponents) {
-
   const handleChangecomps = (
     key: string,
     choiceId: string,
@@ -35,7 +34,7 @@ function renderSectionForms({
 
   const renderEachChoice = (key: string, choice: FormChoices) => (
     <li key={choice.id}>
-      <div className="text-sm float-right mt-1">
+      <div className="float-right mt-1 text-sm">
         {choice.id} -
         {Object.keys(choice)
           .filter((prop) => prop !== "id")
@@ -44,8 +43,8 @@ function renderSectionForms({
               {prop.slice(5)}:
               <input
                 className="
-                  w-10 border-2 rounded-lg text-center
-                border-sky-800 text-sm mx-1"
+                  mx-1 w-10 rounded-lg border-2
+                border-sky-800 text-center text-sm"
                 value={choice[prop]}
                 onChange={(event) =>
                   handleChangecomps(key, choice.id, prop, event)
@@ -61,7 +60,7 @@ function renderSectionForms({
     <div key={key}>
       <h3
         className="
-          text-center text-orange-700 font-bold border-b-2 border-sky-800"
+          border-b-2 border-sky-800 text-center font-bold text-orange-700"
       >
         {key}
       </h3>
@@ -77,42 +76,18 @@ function renderSectionForms({
     <section>
       <h2
         className="
-          text-center text-orange-700 font-bold
-          text-2xl border-b-2 border-slate-700 m-4"
+          m-4 border-b-2 border-slate-700
+          text-center text-2xl font-bold text-orange-700"
       >
         Configuration du formulaire
       </h2>
-      <div className="w-2/3 flex flex-wrap justify-around text-left mx-auto">
-        <div className="text-sm mb-4">
-          <span className="italic font-semibold border-b-2 border-neutral-500">
-            Calcul GPU:{" "}
-          </span>
-          Résolution * Framerate * Qualité * Jeux.
-        </div>
-        <div className="text-sm mb-4">
-          <span className="italic font-semibold border-b-2 border-neutral-500">
-            Calcul CPU:{" "}
-          </span>
-          Si scoreGPU &lt;= 19 cpu = 1, si scoreGPU &lt;= 39 cpu = 2, si
-          scoreGPU &lt;= 99 cpu = 3, si scoreGPU &lt;= 159 cpu = 4, sinon cpu =
-          5, +1 si streming ou boost.
-        </div>
-        <div className="text-sm mb-4">
-          <span className="italic font-semibold border-b-2 border-neutral-500">
-            Calcul RAM:{" "}
-          </span>
-          Le score suit le CPU, si scoreCPU &lt;= 1 ram = 1, si scoreCPU &lt;= 3
-          ram = 2, si scoreCPU == 4 ram = 3, sinon ram = 4.
-        </div>
-      </div>
-      <div className="flex flex-row flex-wrap gap-6 w-3/4 m-auto justify-center">
+      <div className="m-auto flex w-3/4 flex-row flex-wrap justify-center gap-6">
         {Object.keys(formSettings)
           .filter((key) => isFormQuestionSelect(formSettings[key]))
           .map((key) => renderEachQuestion(key))}
       </div>
     </section>
   );
-
 }
 
 export default renderSectionForms;

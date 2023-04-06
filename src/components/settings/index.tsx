@@ -1,9 +1,4 @@
-import {
-  ConfigPc,
-  FormSettings,
-  ComponentPc,
-  ComponentCategories,
-} from "@/data/data";
+import { ConfigPc, FormSettings, ComponentCategories } from "@/data/data";
 import renderSectionConfigs from "./sectionConfigs";
 import renderSectionComponents from "./sectionComponents";
 import renderSectionForms from "./sectionForm";
@@ -29,8 +24,8 @@ function Settings({
     <section className="flex justify-around">
       <div
         className="
-          flex flex-col justify-around gap-2 mx-6 p-8 bg-white rounded-lg
-          border-4 border-orange-500 shadow-2xl shadow-black text-center"
+          mx-6 flex flex-col justify-around gap-2 rounded-lg border-4 border-orange-500
+          bg-white p-8 text-center shadow-2xl shadow-black"
       >
         {renderSectionForms({ formSettings, setFormSettings })}
         {renderSectionComponents({ componentsPc, setComponentsPc })}

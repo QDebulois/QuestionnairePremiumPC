@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'caxo';
-    src: url('/caxo.otf');
+  font-family: "caxo";
+  src: url("/caxo.otf");
 }

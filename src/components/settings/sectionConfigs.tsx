@@ -45,7 +45,7 @@ function renderSectionConfigs({
     <label>
       {confPart}:
       <select
-        className="w-24 border-2 rounded-md border-slate-700 text-sm ml-1 my-auto"
+        className="my-auto ml-1 w-24 rounded-md border-2 border-slate-700 text-sm"
         value={prevConf.name}
         onChange={(event) => handleChangeConfs(confIdx, confPart, event)}
       >
@@ -67,7 +67,7 @@ function renderSectionConfigs({
       {confPart}:
       <input
         className={`${confPart === "name" ? "w-44" : "w-36"}
-             border-2 rounded-md text-center border-slate-700 text-sm ml-1`}
+             ml-1 rounded-md border-2 border-slate-700 text-center text-sm`}
         value={prevConf}
         onChange={(event) => handleChangeConfs(confIdx, confPart, event)}
       />
@@ -89,8 +89,9 @@ function renderSectionConfigs({
   const renderEachConf = (confIdx: string, config: ConfigPc) => (
     <li key={confIdx} className="mx-auto mt-1">
       <ul className="flex flex-row flex-wrap gap-2">
-        {Object.entries(config).map(([confPart, prevConf]) =>
-          renderEachConfComp(confIdx, confPart, prevConf)
+        {Object.entries(config).map(([confPart, prevConf]) => {
+          if (confPart !== "id") return renderEachConfComp(confIdx, confPart, prevConf);
+        }
         )}
       </ul>
     </li>
@@ -100,10 +101,10 @@ function renderSectionConfigs({
     <section>
       <h2
         className="
-          text-center text-orange-700 font-bold
-          text-2xl border-b-2 border-slate-700 m-4"
+          m-4 border-b-2 border-slate-700
+          text-center text-2xl font-bold text-orange-700"
       >
-        Confurations PC
+        Configurations PC
       </h2>
       <ul className="flex flex-col">
         {Object.entries(configsPc).map(([confIdx, config]) =>
