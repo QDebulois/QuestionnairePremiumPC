@@ -1,0 +1,31 @@
+import { FormAnswers } from "@/data/types";
+import { ReactNode } from "react";
+import { FormAnswersContext, SetFormAnswersContext } from "./FormContext";
+import { Updater } from "use-immer";
+
+interface IFormProps {
+  title: ReactNode;
+  body: ReactNode;
+  formAnswers: FormAnswers;
+  setFormAnswers: Updater<FormAnswers>;
+}
+
+function Form({ title, body, formAnswers, setFormAnswers }: IFormProps) {
+  return (
+    <section className="flex flex-col justify-center">
+      <FormAnswersContext.Provider value={formAnswers}>
+      <SetFormAnswersContext.Provider value={setFormAnswers}>
+        <div
+          className="flex flex-col justify-around gap-8 rounded-lg border-4
+            border-orange-500 bg-white p-8 text-center shadow-xl shadow-black"
+        >
+          {title}
+          {body}
+        </div>
+      </SetFormAnswersContext.Provider>
+      </FormAnswersContext.Provider>
+    </section>
+  );
+}
+
+export default Form;

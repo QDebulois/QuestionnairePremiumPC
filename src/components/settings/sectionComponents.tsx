@@ -1,4 +1,4 @@
-import { ComponentPc, ComponentCategories } from "@/data/data";
+import { ComponentPc, ComponentCategories } from "@/data/types";
 
 interface IRenderComponents {
   componentsPc: ComponentCategories;

@@ -1,4 +1,4 @@
-import { FormSettings, FormChoices, isFormQuestionSelect } from "@/data/data";
+import { FormSettings, FormChoices, isFormQuestionSelect } from "@/data/types";
 
 interface IRenderComponents {
   formSettings: FormSettings;

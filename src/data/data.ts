@@ -1,19 +1,17 @@
+import {
+  ComponentPc,
+  ComponentCategories,
+  FormQuestionSelect,
+  FormQuestionSwitch,
+  FormSettings,
+  ConfigPc,
+  CardConfingPc,
+  FormAnswers,
+} from "@/data/types";
+
 /**
  * COMPONNENTS
  */
-
-export type ComponentPc = {
-  [key: string]: string | number;
-  name: string;
-  score: number;
-};
-
-export type ComponentCategories = {
-  [key: string]: ComponentPc[];
-  CPU: ComponentPc[];
-  RAM: ComponentPc[];
-  GPU: ComponentPc[];
-};
 
 export const CPU: ComponentPc[] = [
   // { name: "PentiumG6400", score: 5 },
@@ -62,82 +60,6 @@ export const initialComponentsSettings: ComponentCategories = {
  * FORM SETTINGS
  */
 
-export type FormChoices = {
-  [key: string]: string | number;
-  id: string;
-  scoreCPU: number;
-  scoreRAM: number;
-  scoreGPU: number;
-};
-
-export function isFormChoices(x: any): x is FormChoices {
-  const expectedKeys = ["id", "scoreCPU", "scoreRAM", "scoreGPU"];
-  for (let key in x) {
-    if (!expectedKeys.includes(key)) return false;
-    if (key === "id" && typeof x[key] !== "string") return false;
-    if (key === "scoreCPU" && typeof x[key] !== "number") return false;
-    if (key === "scoreRAM" && typeof x[key] !== "number") return false;
-    if (key === "scoreGPU" && typeof x[key] !== "number") return false;
-  }
-  return true;
-}
-
-export function isFormChoicesArray(x: any): x is FormChoices[] {
-  return Array.isArray(x) && x.every(isFormChoices);
-}
-
-export type FormQuestionSelect = {
-  [key: string]: string | FormChoices[];
-  id: string;
-  label: string;
-  description: string;
-  choices: FormChoices[];
-  answer: string;
-};
-
-export function isFormQuestionSelect(x: any): x is FormQuestionSelect {
-  const expectedKeys = ["id", "label", "description", "choices", "answer"];
-  for (let key in x) {
-    if (!expectedKeys.includes(key)) return false;
-    if (key === "id" && typeof x[key] !== "string") return false;
-    if (key === "label" && typeof x[key] !== "string") return false;
-    if (key === "description" && typeof x[key] !== "string") return false;
-    if (key === "choices" && !isFormChoicesArray(x[key])) return false;
-    if (key === "answer" && typeof x[key] !== "string") return false;
-  }
-  return true;
-}
-
-export type FormQuestionSwitch = {
-  [key: string]: string | boolean;
-  id: string;
-  label: string;
-  description: string;
-  answer: boolean;
-};
-
-export function isFormQuestionSwitch(x: any): x is FormQuestionSwitch {
-  const expectedKeys = ["id", "label", "description", "choices", "answer"];
-  for (let key in x) {
-    if (!expectedKeys.includes(key)) return false;
-    if (key === "id" && typeof x[key] !== "string") return false;
-    if (key === "label" && typeof x[key] !== "string") return false;
-    if (key === "description" && typeof x[key] !== "string") return false;
-    if (key === "answer" && typeof x[key] !== "boolean") return false;
-  }
-  return true;
-}
-
-export type FormSettings = {
-  [key: string]: FormQuestionSelect | FormQuestionSwitch;
-  jeux: FormQuestionSelect;
-  resolution: FormQuestionSelect;
-  framerate: FormQuestionSelect;
-  qualite: FormQuestionSelect;
-  stream: FormQuestionSelect;
-  avenir: FormQuestionSwitch;
-};
-
 export const jeux: FormQuestionSelect = {
   id: "jeux",
   label: "Type de jeux",
@@ -148,7 +70,6 @@ export const jeux: FormQuestionSelect = {
     // { id: "Moyen", scoreCPU: 1, scoreRAM: 2, scoreGPU: 3 },
     { id: "Gros", scoreCPU: 1, scoreRAM: 2, scoreGPU: 3 },
   ],
-  answer: "Petit",
 };
 
 export const resolution: FormQuestionSelect = {
@@ -161,7 +82,6 @@ export const resolution: FormQuestionSelect = {
     { id: "2K", scoreCPU: 1, scoreRAM: 1, scoreGPU: 3 },
     { id: "4K", scoreCPU: 1, scoreRAM: 2, scoreGPU: 5 },
   ],
-  answer: "FullHD",
 };
 
 export const framerate: FormQuestionSelect = {
@@ -174,7 +94,6 @@ export const framerate: FormQuestionSelect = {
     { id: "60 fps", scoreCPU: 2, scoreRAM: 1, scoreGPU: 2 },
     { id: "144 fps", scoreCPU: 3, scoreRAM: 2, scoreGPU: 4 },
   ],
-  answer: "30 fps",
 };
 
 export const qualite: FormQuestionSelect = {
@@ -187,27 +106,22 @@ export const qualite: FormQuestionSelect = {
     // { id: "Medium", scoreCPU: 1, scoreRAM: 1, scoreGPU: 3 },
     { id: "High", scoreCPU: 1, scoreRAM: 1, scoreGPU: 3 },
   ],
-  answer: "Low",
 };
 
 export const stream: FormQuestionSelect = {
   id: "stream",
   label: "Utilité de l'ordinateur",
-  description:
-    "Le streaming et le montage vidéo sont des activitées nécessitant une puissance CPU plus importante.",
+  description: "Le streaming et le montage vidéo sont des activitées nécessitant une puissance CPU plus importante.",
   choices: [
     { id: "Only Gaming", scoreCPU: 1, scoreRAM: 1, scoreGPU: 0 },
     { id: "W/ Streaming", scoreCPU: 2, scoreRAM: 2, scoreGPU: 0 },
   ],
-  answer: "Only Gaming",
 };
 
 export const avenir: FormQuestionSwitch = {
   id: "avenir",
   label: "Boost prévisionnel",
-  description:
-    "Booster le CPU et la RAM pour anticper les jeux et logiciels a venir.",
-  answer: false,
+  description: "Booster le CPU et la RAM pour anticper les jeux et logiciels a venir.",
 };
 
 export const initialFormSettings: FormSettings = {
@@ -220,23 +134,26 @@ export const initialFormSettings: FormSettings = {
 };
 
 /**
- * PC CONFIG
+ * FORM ANSWERS
  */
 
-export type ConfigPc = {
-  [key: string]: string | ComponentPc;
-  id: string;
-  name: string;
-  photoUrl: string;
-  CPU: ComponentPc;
-  RAM: ComponentPc;
-  GPU: ComponentPc;
+export const initialFormAnswers: FormAnswers = {
+  [jeux.id]: jeux.choices[0].id,
+  [resolution.id]: resolution.choices[0].id,
+  [framerate.id]: framerate.choices[0].id,
+  [qualite.id]: qualite.choices[0].id,
+  [stream.id]: stream.choices[0].id,
+  [avenir.id]: false,
 };
+
+/**
+ * PC CONFIG
+ */
 
 export const initialConfigsPc: ConfigPc[] = [
   {
     id: "0",
-    name: "PCGamerEssentiel00",
+    name: "PC Essentiel 00",
     photoUrl: "https://www.premium-pc.com/upload/category/3/bureautique.webp",
     CPU: CPU.find((component) => component.name === "i3-10100F") || CPU[0],
     RAM: RAM.find((component) => component.name === "16Go") || RAM[0],
@@ -244,7 +161,7 @@ export const initialConfigsPc: ConfigPc[] = [
   },
   {
     id: "1",
-    name: "PCGamerEssentiel01",
+    name: "PC  Essentiel 01",
     photoUrl: "https://www.premium-pc.com/upload/category/3/bureautique.webp",
     CPU: CPU.find((component) => component.name === "i3-10100F") || CPU[0],
     RAM: RAM.find((component) => component.name === "16Go") || RAM[0],
@@ -252,7 +169,7 @@ export const initialConfigsPc: ConfigPc[] = [
   },
   {
     id: "2",
-    name: "PCGamerEssentiel02",
+    name: "PC  Essentiel 02",
     photoUrl: "https://www.premium-pc.com/upload/category/3/bureautique.webp",
     CPU: CPU.find((component) => component.name === "i3-10100F") || CPU[0],
     RAM: RAM.find((component) => component.name === "16Go") || RAM[0],
@@ -260,72 +177,64 @@ export const initialConfigsPc: ConfigPc[] = [
   },
   {
     id: "3",
-    name: "PCGamerEssentiel03",
-    photoUrl:
-      "https://www.premium-pc.com/upload/category/5/101cbis_modif_800.webp",
+    name: "PC  Essentiel 03",
+    photoUrl: "https://www.premium-pc.com/upload/category/5/101cbis_modif_800.webp",
     CPU: CPU.find((component) => component.name === "i5-11600KF") || CPU[0],
     RAM: RAM.find((component) => component.name === "16Go") || RAM[0],
     GPU: GPU.find((component) => component.name === "RTX-3050") || GPU[0],
   },
   {
     id: "4",
-    name: "PCGamerEssentiel04",
-    photoUrl:
-      "https://www.premium-pc.com/upload/category/5/101cbis_modif_800.webp",
+    name: "PC  Essentiel 04",
+    photoUrl: "https://www.premium-pc.com/upload/category/5/101cbis_modif_800.webp",
     CPU: CPU.find((component) => component.name === "i5-11600KF") || CPU[0],
     RAM: RAM.find((component) => component.name === "16Go") || RAM[0],
     GPU: GPU.find((component) => component.name === "RTX-3060") || GPU[0],
   },
   {
     id: "5",
-    name: "PCGamerEssentiel07",
-    photoUrl:
-      "https://www.premium-pc.com/upload/category/1/boitier01_modif_800.webp",
+    name: "PC  Essentiel 07",
+    photoUrl: "https://www.premium-pc.com/upload/category/1/boitier01_modif_800.webp",
     CPU: CPU.find((component) => component.name === "i7-11700KF") || CPU[0],
     RAM: RAM.find((component) => component.name === "32Go") || RAM[0],
     GPU: GPU.find((component) => component.name === "RTX-3070") || GPU[0],
   },
   {
     id: "6",
-    name: "PCGamerEssentiel08",
-    photoUrl:
-      "https://www.premium-pc.com/upload/category/1/boitier01_modif_800.webp",
+    name: "PC  Essentiel 08",
+    photoUrl: "https://www.premium-pc.com/upload/category/1/boitier01_modif_800.webp",
     CPU: CPU.find((component) => component.name === "i7-11700KF") || CPU[0],
     RAM: RAM.find((component) => component.name === "32Go") || RAM[0],
     GPU: GPU.find((component) => component.name === "RTX-3070ti") || GPU[0],
   },
   {
     id: "7",
-    name: "PCGamerSilenceRGB06",
-    photoUrl:
-      "https://www.premium-pc.com/upload/category/1/boitier01_modif_800.webp",
+    name: "PC Silence RGB 06",
+    photoUrl: "https://www.premium-pc.com/upload/category/1/boitier01_modif_800.webp",
     CPU: CPU.find((component) => component.name === "i7-12700KF") || CPU[0],
     RAM: RAM.find((component) => component.name === "32Go") || RAM[0],
     GPU: GPU.find((component) => component.name === "RTX-4070") || GPU[0],
   },
   {
     id: "8",
-    name: "PCGamerSilenceRGB07",
-    photoUrl:
-      "https://www.premium-pc.com/upload/category/1/boitier01_modif_800.webp",
+    name: "PC Silence RGB 07",
+    photoUrl: "https://www.premium-pc.com/upload/category/1/boitier01_modif_800.webp",
     CPU: CPU.find((component) => component.name === "i7-12700KF") || CPU[0],
     RAM: RAM.find((component) => component.name === "32Go") || RAM[0],
     GPU: GPU.find((component) => component.name === "RTX-4070ti") || GPU[0],
   },
   {
     id: "9",
-    name: "PCGamerSilence4080-intel",
-    photoUrl:
-      "https://www.premium-pc.com/upload/category/1/boitier01_modif_800.webp",
+    name: "PC Silence 4080",
+    photoUrl: "https://www.premium-pc.com/upload/category/1/boitier01_modif_800.webp",
     CPU: CPU.find((component) => component.name === "i7-13700KF") || CPU[0],
     RAM: RAM.find((component) => component.name === "32Go") || RAM[0],
     GPU: GPU.find((component) => component.name === "RTX-4080") || GPU[0],
   },
   {
     id: "10",
-    name: "PCGamerSilence4080-intel-i9",
-    photoUrl:
-      "https://www.premium-pc.com/upload/category/1/boitier01_modif_800.webp",
+    name: "PC Silence 4080 i9",
+    photoUrl: "https://www.premium-pc.com/upload/category/1/boitier01_modif_800.webp",
     CPU: CPU.find((component) => component.name === "i9-13900KF") || CPU[0],
     RAM: RAM.find((component) => component.name === "64Go") || RAM[0],
     GPU: GPU.find((component) => component.name === "RTX-4090") || GPU[0],
@@ -333,16 +242,8 @@ export const initialConfigsPc: ConfigPc[] = [
 ];
 
 /**
- * CardConfigPc
+ * CARD
  */
-
-export type CardConfingPc = {
-  [key: string]: number | ConfigPc;
-  scoreCPU: number;
-  scoreRAM: number;
-  scoreGPU: number;
-  configPc: ConfigPc;
-};
 
 export const initialCardConfigPc: CardConfingPc = {
   scoreCPU: 0,

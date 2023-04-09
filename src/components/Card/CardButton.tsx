@@ -1,15 +1,13 @@
 import { useCardContext } from "./CardContext";
 
 function CardButton() {
-  const cardConfigPc = useCardContext()
+  const cardConfigPc = useCardContext();
 
   return (
     <div className="flex justify-around">
       <button
         type="button"
-        onClick={() =>
-          alert(`Redirection vers la page pour acheter ${cardConfigPc.configPc.name}`)
-        }
+        onClick={() => alert(`Redirection vers la page pour acheter ${cardConfigPc.configPc.name}`)}
         className="
           rounded bg-red-700 px-6 py-2 text-sm
           font-medium uppercase leading-normal text-white
@@ -22,4 +20,4 @@ function CardButton() {
   );
 }
 
-export default CardButton
+export default CardButton;

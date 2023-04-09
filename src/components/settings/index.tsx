@@ -1,4 +1,4 @@
-import { ConfigPc, FormSettings, ComponentCategories } from "@/data/data";
+import { ConfigPc, FormSettings, ComponentCategories } from "@/data/types";
 import renderSectionConfigs from "./sectionConfigs";
 import renderSectionComponents from "./sectionComponents";
 import renderSectionForms from "./sectionForm";
