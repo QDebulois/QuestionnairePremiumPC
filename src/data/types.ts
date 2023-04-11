@@ -130,3 +130,9 @@ export type CardConfingPc = {
   scoreGPU: number;
   configPc: ConfigPc;
 };
+
+/**
+ * REACT TYPES
+ */
+
+export type ChangeEventSelectOrInput = React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>;

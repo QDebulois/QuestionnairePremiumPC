@@ -1,13 +1,12 @@
 import { Transition } from "@headlessui/react";
-import { ReactNode } from "react";
+import { ReactNode, memo } from "react";
 
 interface IFormInput {
   showHint: boolean;
   children: ReactNode;
 }
 
-function FormHint({ showHint, children }: IFormInput) {
-
+const FormHint = memo(({ showHint, children }: IFormInput) => {
   return (
     <Transition
       show={showHint}
@@ -23,6 +22,8 @@ function FormHint({ showHint, children }: IFormInput) {
       </div>
     </Transition>
   );
-}
+})
+FormHint.displayName = "FormHint";
+
 
 export default FormHint;

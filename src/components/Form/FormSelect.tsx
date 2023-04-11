@@ -1,14 +1,16 @@
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import { FormAnswers, FormQuestionSelect } from "@/data/types";
 import { useSetFormAnswersContext } from "./FormContext";
+import { memo } from "react";
 
 interface IFormSelect {
   formQuestion: FormQuestionSelect;
   showHint: boolean;
   onClickHint: (formKey: string) => void;
+  answer: string;
 }
 
-function FormSelect({ formQuestion, showHint, onClickHint }: IFormSelect) {
+const FormSelect = memo(({ formQuestion, showHint, onClickHint, answer }: IFormSelect) => {
   const setFormAnswers = useSetFormAnswersContext();
 
   const handleChangeSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -33,6 +35,7 @@ function FormSelect({ formQuestion, showHint, onClickHint }: IFormSelect) {
       <select
         className="my-auto ml-auto w-36 rounded-lg border-2 border-sky-800 text-center text-lg"
         onChange={(e) => handleChangeSelect(e)}
+        value={answer}
       >
         {Object.values(formQuestion.choices).map((choice) => (
           <option key={choice.id} value={choice.id}>
@@ -42,6 +45,7 @@ function FormSelect({ formQuestion, showHint, onClickHint }: IFormSelect) {
       </select>
     </label>
   );
-}
+});
+FormSelect.displayName = "FormSelect";
 
 export default FormSelect;

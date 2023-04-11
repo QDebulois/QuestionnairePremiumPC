@@ -1,6 +1,7 @@
 import { ReactNode, memo } from "react";
 import { Transition } from "@headlessui/react";
 import { CardConfingPc } from "@/data/types";
+import Link from "next/link";
 import CardInfos from "./CardInfos";
 import CardContext from "./CardContext";
 import CardImage from "./CardImage";
@@ -28,7 +29,13 @@ export const Card = memo(({ cardConfigPc, image, body }: ICardProps) => {
           className="flex max-w-xs flex-col justify-center rounded-lg border-4
         border-orange-500 bg-white shadow-lg shadow-black"
         >
-          {image}
+          <Link
+            href={cardConfigPc.configPc.photoUrl}
+            title={`Voir ${cardConfigPc.configPc.name} en detail.`}
+            target="_blank"
+          >
+            {image}
+          </Link>
           {body}
         </Transition>
       </CardContext.Provider>

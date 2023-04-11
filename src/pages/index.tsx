@@ -4,7 +4,7 @@ import H1 from "@/components/Titles/H1";
 import H2 from "@/components/Titles/H2";
 import Form from "@/components/Form/Form";
 import { Card, CardParts } from "@/components/Card/Card";
-import Settings from "@/components/settings";
+import Settings from "@/components/Settings/Settings";
 import {
   initialFormSettings,
   initialComponentsSettings,
@@ -18,7 +18,6 @@ import FormBody from "@/components/Form/FormBody";
 import { useImmer } from "use-immer";
 
 function Home() {
-  // TODO: Opti de l'image de Card et de Settings, les plus lourds dans flamegraph.
   const [componentsPc, setComponentsPc] = useState<ComponentCategories>(initialComponentsSettings);
   const [configsPc, setConfigsPc] = useState<ConfigPc[]>(initialConfigsPc);
   const [formSettings, setFormSettings] = useState<FormSettings>(initialFormSettings);
@@ -26,7 +25,7 @@ function Home() {
   const [formAnswers, setFormAnswers] = useImmer<FormAnswers>(initialFormAnswers);
   const [cardConfigPc, setCardConfigPc] = useState<CardConfingPc>(initialCardConfigPc);
 
-  const newCardConfig = useMemo(() => {
+  const newCardConfig: CardConfingPc = useMemo(() => {
     return getAdaptedConfig({ formAnswers, formSettings, componentsPc, configsPc });
   }, [formAnswers, formSettings, componentsPc, configsPc]);
 
@@ -49,7 +48,7 @@ function Home() {
         <section className="flex flex-wrap justify-evenly gap-8">
           <Form
             title={<H2>Questions</H2>}
-            body={<FormBody formSettings={formSettings} />}
+            body={<FormBody formSettings={formSettings} formAnswers={formAnswers} />}
             formAnswers={formAnswers}
             setFormAnswers={setFormAnswers}
           />
@@ -68,12 +67,13 @@ function Home() {
         </section>
 
         <Settings
-          formSettings={formSettings}
-          setFormSettings={setFormSettings}
-          componentsPc={componentsPc}
-          setComponentsPc={setComponentsPc}
-          configsPc={configsPc}
-          setConfigsPc={setConfigsPc}
+          body={
+            <>
+              <Settings.Form formSettings={formSettings} setFormSettings={setFormSettings} />
+              <Settings.Components componentsPc={componentsPc} setComponentsPc={setComponentsPc} />
+              <Settings.Configs componentsPc={componentsPc} configsPc={configsPc} setConfigsPc={setConfigsPc} />
+            </>
+          }
         />
       </main>
     </>

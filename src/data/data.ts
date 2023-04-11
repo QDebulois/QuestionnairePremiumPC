@@ -161,7 +161,7 @@ export const initialConfigsPc: ConfigPc[] = [
   },
   {
     id: "1",
-    name: "PC  Essentiel 01",
+    name: "PC Essentiel 01",
     photoUrl: "https://www.premium-pc.com/upload/category/3/bureautique.webp",
     CPU: CPU.find((component) => component.name === "i3-10100F") || CPU[0],
     RAM: RAM.find((component) => component.name === "16Go") || RAM[0],
@@ -169,7 +169,7 @@ export const initialConfigsPc: ConfigPc[] = [
   },
   {
     id: "2",
-    name: "PC  Essentiel 02",
+    name: "PC Essentiel 02",
     photoUrl: "https://www.premium-pc.com/upload/category/3/bureautique.webp",
     CPU: CPU.find((component) => component.name === "i3-10100F") || CPU[0],
     RAM: RAM.find((component) => component.name === "16Go") || RAM[0],
@@ -177,7 +177,7 @@ export const initialConfigsPc: ConfigPc[] = [
   },
   {
     id: "3",
-    name: "PC  Essentiel 03",
+    name: "PC Essentiel 03",
     photoUrl: "https://www.premium-pc.com/upload/category/5/101cbis_modif_800.webp",
     CPU: CPU.find((component) => component.name === "i5-11600KF") || CPU[0],
     RAM: RAM.find((component) => component.name === "16Go") || RAM[0],
@@ -185,7 +185,7 @@ export const initialConfigsPc: ConfigPc[] = [
   },
   {
     id: "4",
-    name: "PC  Essentiel 04",
+    name: "PC Essentiel 04",
     photoUrl: "https://www.premium-pc.com/upload/category/5/101cbis_modif_800.webp",
     CPU: CPU.find((component) => component.name === "i5-11600KF") || CPU[0],
     RAM: RAM.find((component) => component.name === "16Go") || RAM[0],
@@ -193,7 +193,7 @@ export const initialConfigsPc: ConfigPc[] = [
   },
   {
     id: "5",
-    name: "PC  Essentiel 07",
+    name: "PC Essentiel 07",
     photoUrl: "https://www.premium-pc.com/upload/category/1/boitier01_modif_800.webp",
     CPU: CPU.find((component) => component.name === "i7-11700KF") || CPU[0],
     RAM: RAM.find((component) => component.name === "32Go") || RAM[0],
@@ -201,7 +201,7 @@ export const initialConfigsPc: ConfigPc[] = [
   },
   {
     id: "6",
-    name: "PC  Essentiel 08",
+    name: "PC Essentiel 08",
     photoUrl: "https://www.premium-pc.com/upload/category/1/boitier01_modif_800.webp",
     CPU: CPU.find((component) => component.name === "i7-11700KF") || CPU[0],
     RAM: RAM.find((component) => component.name === "32Go") || RAM[0],

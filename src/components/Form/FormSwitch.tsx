@@ -1,18 +1,17 @@
 import { FormAnswers, FormQuestionSwitch } from "@/data/types";
 import { Switch } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
-import { useFormAnswersContext, useSetFormAnswersContext } from "./FormContext";
+import { useSetFormAnswersContext } from "./FormContext";
+import { memo } from "react";
 
 interface IFormSwitch {
   formQuestion: FormQuestionSwitch;
   showHint: boolean;
   onClickHint: (formKey: string) => void;
+  answer: boolean;
 }
 
-function FormSwitch({ formQuestion, showHint, onClickHint }: IFormSwitch) {
-  const answer = useFormAnswersContext()[formQuestion.id];
-  if (typeof answer !== "boolean") throw new Error("Answer type must be boolean for the switch.");
-
+const FormSwitch = memo(({ formQuestion, showHint, onClickHint, answer }: IFormSwitch) => {
   const setFormAnswers = useSetFormAnswersContext();
 
   const handleChangeSwitch = () => {
@@ -56,6 +55,7 @@ function FormSwitch({ formQuestion, showHint, onClickHint }: IFormSwitch) {
       </div>
     </label>
   );
-}
+});
+FormSwitch.displayName = "FormSwitch";
 
 export default FormSwitch;
