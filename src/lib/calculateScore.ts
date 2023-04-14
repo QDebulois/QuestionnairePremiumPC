@@ -41,17 +41,17 @@ function getAdaptedConfig({ formAnswers, formSettings, configsPc }: IGetAdaptedC
   });
 
   let configIdx = 0;
+  while (newCardConfigPc.configPc.GPU.score < newCardConfigPc.scoreGPU) {
+    configIdx++;
+    if (configIdx == configsPc.length) break;
+    newCardConfigPc.configPc = configsPc[configIdx];
+  }
   while (newCardConfigPc.configPc.CPU.score < newCardConfigPc.scoreCPU) {
     configIdx++;
     if (configIdx == configsPc.length) break;
     newCardConfigPc.configPc = configsPc[configIdx];
   }
   while (newCardConfigPc.configPc.RAM.score < newCardConfigPc.scoreRAM) {
-    configIdx++;
-    if (configIdx == configsPc.length) break;
-    newCardConfigPc.configPc = configsPc[configIdx];
-  }
-  while (newCardConfigPc.configPc.GPU.score < newCardConfigPc.scoreGPU) {
     configIdx++;
     if (configIdx == configsPc.length) break;
     newCardConfigPc.configPc = configsPc[configIdx];
