@@ -1,5 +1,5 @@
 import { ComponentCategories } from "@/data/types";
-import { createContext, useContext, Dispatch } from "react";
+import { createContext, Dispatch, useContext } from "react";
 
 type SettingsComponentsContextType = {
   componentsPc: ComponentCategories;

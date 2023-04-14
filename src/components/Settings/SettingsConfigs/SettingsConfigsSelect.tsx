@@ -1,5 +1,5 @@
-import { ComponentPc } from "@/data/types";
-import { ChangeEventSelectOrInput } from "@/data/types";
+import { ChangeEventSelectOrInput, ComponentPc } from "@/data/types";
+
 import { useSettingsConfigsContext } from "./SettingsConfigsContext";
 
 interface ISettingsConfigsSelect {

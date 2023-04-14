@@ -1,6 +1,7 @@
-import SettingsConfigsConfig from "./SettingsConfigsConfig";
-import { ConfigPc, ComponentCategories } from "@/data/types";
+import { ComponentCategories, ConfigPc } from "@/data/types";
 import { Dispatch, memo } from "react";
+
+import SettingsConfigsConfig from "./SettingsConfigsConfig";
 import { SettingsConfigsContext } from "./SettingsConfigsContext";
 
 interface IRenderConfigs {

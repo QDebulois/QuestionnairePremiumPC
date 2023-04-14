@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ReactNode, memo } from "react";
+import { memo, ReactNode } from "react";
 
 interface ITitleProps {
   children: ReactNode;

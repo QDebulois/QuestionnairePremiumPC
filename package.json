@@ -11,6 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.12",
     "@heroicons/react": "^2.0.16",
+    "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@types/node": "18.14.1",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
@@ -20,6 +21,7 @@
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.4",
     "react": "18.2.0",
+    "react-devtools": "^4.27.4",
     "react-dom": "18.2.0",
     "sharp": "^0.31.3",
     "typescript": "4.9.5",

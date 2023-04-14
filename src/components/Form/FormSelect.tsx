@@ -1,7 +1,8 @@
-import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import { FormAnswers, FormQuestionSelect } from "@/data/types";
-import { useSetFormAnswersContext } from "./FormContext";
+import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import { memo } from "react";
+
+import { useSetFormAnswersContext } from "./FormContext";
 
 interface IFormSelect {
   formQuestion: FormQuestionSelect;

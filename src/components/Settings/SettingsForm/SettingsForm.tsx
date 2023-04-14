@@ -1,7 +1,8 @@
 import { FormSettings, isFormQuestionSelect } from "@/data/types";
-import SettingsFormQuestion from "./SettingsFormQuestion";
 import { Dispatch, memo } from "react";
+
 import { SettingsFormContext } from "./SettingsFormContext";
+import SettingsFormQuestion from "./SettingsFormQuestion";
 
 interface IRenderComponents {
   formSettings: FormSettings;
@@ -11,8 +12,8 @@ interface IRenderComponents {
 const SettingsForm = memo(({ formSettings, setFormSettings }: IRenderComponents) => {
   const contextValues = {
     formSettings,
-    setFormSettings
-  }
+    setFormSettings,
+  };
 
   return (
     <section>

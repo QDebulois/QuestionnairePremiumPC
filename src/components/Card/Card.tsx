@@ -1,13 +1,14 @@
-import { ReactNode, memo } from "react";
-import { Transition } from "@headlessui/react";
 import { CardConfingPc } from "@/data/types";
+import { Transition } from "@headlessui/react";
 import Link from "next/link";
-import CardInfos from "./CardInfos";
+import { memo, ReactNode } from "react";
+
+import CardBody from "./CardBody";
+import CardButton from "./CardButton";
 import CardContext from "./CardContext";
 import CardImage from "./CardImage";
+import CardInfos from "./CardInfos";
 import CardScore from "./CardScore";
-import CardButton from "./CardButton";
-import CardBody from "./CardBody";
 
 interface ICardProps {
   cardConfigPc: CardConfingPc;
@@ -42,6 +43,7 @@ export const Card = memo(({ cardConfigPc, image, body }: ICardProps) => {
     </section>
   );
 });
+
 Card.displayName = "Card";
 
 export const CardParts = () => {};

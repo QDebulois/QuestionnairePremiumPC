@@ -1,7 +1,7 @@
 import { useCardContext } from "./CardContext";
 
 function CardScore() {
-  const cardConfigPc = useCardContext()
+  const cardConfigPc = useCardContext();
 
   return (
     <>

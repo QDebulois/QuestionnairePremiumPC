@@ -1,12 +1,12 @@
 import {
-  ComponentPc,
+  CardConfingPc,
   ComponentCategories,
+  ComponentPc,
+  ConfigPc,
+  FormAnswers,
   FormQuestionSelect,
   FormQuestionSwitch,
   FormSettings,
-  ConfigPc,
-  CardConfingPc,
-  FormAnswers,
 } from "@/data/types";
 
 /**

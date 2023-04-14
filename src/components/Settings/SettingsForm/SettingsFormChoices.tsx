@@ -1,4 +1,6 @@
 import { FormChoices, isFormQuestionSelect } from "@/data/types";
+import { memo } from "react";
+
 import { useSettingsFormContext } from "./SettingsFormContext";
 
 interface ISettingsFormChoices {
@@ -6,7 +8,7 @@ interface ISettingsFormChoices {
   choice: FormChoices;
 }
 
-function SettingsFormChoices({ formKey, choice }: ISettingsFormChoices) {
+const SettingsFormChoices = memo(({ formKey, choice }: ISettingsFormChoices) => {
   const { formSettings, setFormSettings } = useSettingsFormContext();
 
   const handleChangecomps = (
@@ -51,6 +53,8 @@ function SettingsFormChoices({ formKey, choice }: ISettingsFormChoices) {
       </div>
     </li>
   );
-}
+});
+
+SettingsFormChoices.displayName = "SettingsFormChoices";
 
 export default SettingsFormChoices;

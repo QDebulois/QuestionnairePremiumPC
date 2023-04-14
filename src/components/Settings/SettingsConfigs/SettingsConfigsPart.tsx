@@ -1,9 +1,9 @@
-import { ComponentPc } from "@/data/types";
-import { ChangeEventSelectOrInput } from "@/data/types";
+import { ChangeEventSelectOrInput, ComponentPc } from "@/data/types";
+import { memo, useCallback } from "react";
+
+import { useSettingsConfigsContext } from "./SettingsConfigsContext";
 import SettingsConfigsInput from "./SettingsConfigsInput";
 import SettingsConfigsSelect from "./SettingsConfigsSelect";
-import { useSettingsConfigsContext } from "./SettingsConfigsContext";
-import { useCallback } from "react";
 
 interface ISettingsConfigsPart {
   pcConfigIndex: string;
@@ -11,7 +11,7 @@ interface ISettingsConfigsPart {
   pcComponent: string | ComponentPc;
 }
 
-function SettingsConfigsPart({ pcConfigIndex, pcPart, pcComponent }: ISettingsConfigsPart) {
+const SettingsConfigsPart = memo(({ pcConfigIndex, pcPart, pcComponent }: ISettingsConfigsPart) => {
   const { componentsPc, configsPc, setConfigsPc } = useSettingsConfigsContext();
 
   const handleChangeConfs = useCallback(
@@ -53,6 +53,8 @@ function SettingsConfigsPart({ pcConfigIndex, pcPart, pcComponent }: ISettingsCo
       )}
     </li>
   );
-}
+});
+
+SettingsConfigsPart.displayName = "SettingsConfigsPart";
 
 export default SettingsConfigsPart;

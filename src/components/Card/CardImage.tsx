@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { useCardContext } from "./CardContext";
 import { memo } from "react";
+
+import { useCardContext } from "./CardContext";
 
 const CardImage = memo(() => {
   const cardConfigPc = useCardContext();

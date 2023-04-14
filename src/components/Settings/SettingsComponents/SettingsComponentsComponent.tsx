@@ -1,12 +1,14 @@
-import { useSettingsComponentsContext } from "./SettingsComponentsContext";
 import { ComponentPc } from "@/data/types";
+import { memo } from "react";
+
+import { useSettingsComponentsContext } from "./SettingsComponentsContext";
 
 interface ISettingsComponentsComponent {
   component: ComponentPc;
   category: string;
 }
 
-function SettingsComponentsComponent({ component, category }: ISettingsComponentsComponent) {
+const SettingsComponentsComponent = memo(({ component, category }: ISettingsComponentsComponent) => {
   const { componentsPc, setComponentsPc } = useSettingsComponentsContext();
 
   const handleChangePcComponent = (
@@ -39,6 +41,8 @@ function SettingsComponentsComponent({ component, category }: ISettingsComponent
       </label>
     </li>
   );
-}
+});
+
+SettingsComponentsComponent.displayName = "SettingsComponentsComponent";
 
 export default SettingsComponentsComponent;

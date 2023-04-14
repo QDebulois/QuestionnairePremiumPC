@@ -1,8 +1,9 @@
 import { FormAnswers, FormQuestionSwitch } from "@/data/types";
 import { Switch } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
-import { useSetFormAnswersContext } from "./FormContext";
 import { memo } from "react";
+
+import { useSetFormAnswersContext } from "./FormContext";
 
 interface IFormSwitch {
   formQuestion: FormQuestionSwitch;

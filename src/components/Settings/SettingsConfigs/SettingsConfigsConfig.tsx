@@ -1,4 +1,5 @@
 import { ConfigPc } from "@/data/types";
+
 import SettingsConfigsPart from "./SettingsConfigsPart";
 
 interface ISettingsConfigsConfig {

@@ -1,12 +1,8 @@
-import {
-  isFormQuestionSelect,
-  FormQuestionSelect,
-  FormQuestionSwitch,
-  isFormQuestionSwitch,
-} from "@/data/types";
+import { FormQuestionSelect, FormQuestionSwitch, isFormQuestionSelect, isFormQuestionSwitch } from "@/data/types";
+
+import FormHint from "./FormHint";
 import FormSelect from "./FormSelect";
 import FormSwitch from "./FormSwitch";
-import FormHint from "./FormHint";
 
 interface IFormInput {
   formQuestion: FormQuestionSelect | FormQuestionSwitch;

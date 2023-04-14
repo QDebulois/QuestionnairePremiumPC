@@ -1,4 +1,4 @@
-import { ReactNode, memo } from "react";
+import { memo, ReactNode } from "react";
 
 interface ITitleProps {
   children: ReactNode;
@@ -10,8 +10,8 @@ const H2 = memo(({ children }: ITitleProps) => {
       {children}
     </h2>
   );
-})
+});
 
-H2.displayName = "H2"
+H2.displayName = "H2";
 
 export default H2;

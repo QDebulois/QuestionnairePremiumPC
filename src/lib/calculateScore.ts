@@ -1,14 +1,12 @@
 import {
-  isFormQuestionSelect,
-  isFormQuestionSwitch,
+  CardConfingPc,
   ComponentCategories,
   ConfigPc,
-  FormSettings,
-  CardConfingPc,
   FormAnswers,
+  FormSettings,
+  isFormQuestionSelect,
+  isFormQuestionSwitch,
 } from "@/data/types";
-
-import { inspect } from "util";
 
 interface IGetAdaptedConfig {
   formAnswers: FormAnswers;
@@ -17,7 +15,7 @@ interface IGetAdaptedConfig {
   configsPc: ConfigPc[];
 }
 
-function getAdaptedConfig({ formAnswers, formSettings, componentsPc, configsPc }: IGetAdaptedConfig): CardConfingPc {
+function getAdaptedConfig({ formAnswers, formSettings, configsPc }: IGetAdaptedConfig): CardConfingPc {
   let newCardConfigPc: CardConfingPc = {
     scoreCPU: 0,
     scoreRAM: 0,
@@ -43,19 +41,22 @@ function getAdaptedConfig({ formAnswers, formSettings, componentsPc, configsPc }
     }
   });
 
-  componentsPc.GPU.forEach((gpu) => {
-    if (newCardConfigPc.scoreGPU >= gpu.score) {
-      let adaptedConfig = configsPc.find((configPc) => {
-        if (configPc.GPU.name === gpu.name) {
-          return configPc;
-        }
-      });
-      if (adaptedConfig) {
-        newCardConfigPc.configPc = adaptedConfig;
-        return;
-      }
-    }
-  });
+  let configIdx = 0;
+  while (newCardConfigPc.configPc.CPU.score < newCardConfigPc.scoreCPU) {
+    configIdx++;
+    if (configIdx == configsPc.length) break;
+    newCardConfigPc.configPc = configsPc[configIdx];
+  }
+  while (newCardConfigPc.configPc.RAM.score < newCardConfigPc.scoreRAM) {
+    configIdx++;
+    if (configIdx == configsPc.length) break;
+    newCardConfigPc.configPc = configsPc[configIdx];
+  }
+  while (newCardConfigPc.configPc.GPU.score < newCardConfigPc.scoreGPU) {
+    configIdx++;
+    if (configIdx == configsPc.length) break;
+    newCardConfigPc.configPc = configsPc[configIdx];
+  }
 
   return newCardConfigPc;
 }

@@ -1,5 +1,5 @@
 import { Transition } from "@headlessui/react";
-import { ReactNode, memo } from "react";
+import { memo, ReactNode } from "react";
 
 interface IFormInput {
   showHint: boolean;
@@ -17,13 +17,10 @@ const FormHint = memo(({ showHint, children }: IFormInput) => {
       leaveFrom="transform scale-100 opacity-100"
       leaveTo="transform scale-90 opacity-0"
     >
-      <div className="mx-auto mt-2 max-w-xs rounded-md bg-neutral-200 p-1 text-sm text-neutral-600">
-        {children}
-      </div>
+      <div className="mx-auto mt-2 max-w-xs rounded-md bg-neutral-200 p-1 text-sm text-neutral-600">{children}</div>
     </Transition>
   );
-})
+});
 FormHint.displayName = "FormHint";
-
 
 export default FormHint;

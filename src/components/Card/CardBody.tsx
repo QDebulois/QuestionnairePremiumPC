@@ -6,7 +6,7 @@ interface ICardBody {
 
 const CardBody = memo(({ children }: ICardBody) => {
   return <div className="p-6">{children}</div>;
-})
+});
 
 CardBody.displayName = "CardBody";
 

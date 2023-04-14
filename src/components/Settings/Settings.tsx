@@ -1,7 +1,8 @@
-import SettingsConfigs from "./SettingsConfigs/SettingsConfigs";
-import SettingsComponents from "./SettingsComponents/SettingsComponents";
-import SettingsForm from "./SettingsForm/SettingsForm";
 import { ReactNode } from "react";
+
+import SettingsComponents from "./SettingsComponents/SettingsComponents";
+import SettingsConfigs from "./SettingsConfigs/SettingsConfigs";
+import SettingsForm from "./SettingsForm/SettingsForm";
 
 interface ISettingProps {
   body: ReactNode;

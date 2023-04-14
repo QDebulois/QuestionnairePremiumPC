@@ -1,20 +1,20 @@
-import Head from "next/head";
-import { useState, useEffect, useMemo } from "react";
+import { Card, CardParts } from "@/components/Card/Card";
+import Form from "@/components/Form/Form";
+import FormBody from "@/components/Form/FormBody";
+import Settings from "@/components/Settings/Settings";
 import H1 from "@/components/Titles/H1";
 import H2 from "@/components/Titles/H2";
-import Form from "@/components/Form/Form";
-import { Card, CardParts } from "@/components/Card/Card";
-import Settings from "@/components/Settings/Settings";
 import {
-  initialFormSettings,
+  initialCardConfigPc,
   initialComponentsSettings,
   initialConfigsPc,
-  initialCardConfigPc,
   initialFormAnswers,
+  initialFormSettings,
 } from "@/data/data";
-import { ConfigPc, FormSettings, ComponentCategories, CardConfingPc, FormAnswers } from "@/data/types";
+import { CardConfingPc, ComponentCategories, ConfigPc, FormAnswers, FormSettings } from "@/data/types";
 import getAdaptedConfig from "@/lib/calculateScore";
-import FormBody from "@/components/Form/FormBody";
+import Head from "next/head";
+import { useEffect, useMemo, useState } from "react";
 import { useImmer } from "use-immer";
 
 function Home() {
