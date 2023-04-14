@@ -24,9 +24,11 @@ const SettingsConfigs = memo(({ componentsPc, configsPc, setConfigsPc }: IRender
           Configurations PC
         </h2>
         <ul className="flex flex-col">
-          {Object.entries(configsPc).map(([pcConfigIndex, pcConfig]) => (
-            <SettingsConfigsConfig key={pcConfigIndex} pcConfigIndex={pcConfigIndex} pcConfig={pcConfig} />
-          ))}
+          {Object.entries(configsPc)
+            .sort((a, b) => Number(a[1].id) - Number(b[1].id))
+            .map(([pcConfigIndex, pcConfig]) => (
+              <SettingsConfigsConfig key={pcConfigIndex} pcConfigIndex={pcConfigIndex} pcConfig={pcConfig} />
+            ))}
         </ul>
       </SettingsConfigsContext.Provider>
     </section>

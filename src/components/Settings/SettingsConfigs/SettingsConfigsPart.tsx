@@ -1,4 +1,4 @@
-import { ChangeEventSelectOrInput, ComponentPc } from "@/data/types";
+import { ChangeEventSelectOrInput, ComponentPc, ConfigPc } from "@/data/types";
 import { memo, useCallback } from "react";
 
 import { useSettingsConfigsContext } from "./SettingsConfigsContext";
@@ -16,20 +16,22 @@ const SettingsConfigsPart = memo(({ pcConfigIndex, pcPart, pcComponent }: ISetti
 
   const handleChangeConfs = useCallback(
     (pcConfigIndex: string, pcPart: string, e: ChangeEventSelectOrInput) => {
-      setConfigsPc(
-        configsPc.map((config, index) => {
+      const newConfigsPc: ConfigPc[] = configsPc
+        .map((config, index) => {
           if (index === Number(pcConfigIndex)) {
             if (typeof config[pcPart] === "string") {
               config[pcPart] = e.target.value;
             } else {
               config[pcPart] =
-                componentsPc[pcPart].find((comp) => comp.name === e.target.value) || componentsPc[pcPart][0];
+                componentsPc[pcPart].find((comp) => comp.name === e.target.value) ?? componentsPc[pcPart][0];
             }
             return config;
           }
           return config;
         })
-      );
+        .sort((a, b) => a.CPU.score + a.RAM.score + a.GPU.score - (b.CPU.score + b.RAM.score + b.GPU.score));
+
+      setConfigsPc(newConfigsPc);
     },
     [componentsPc, configsPc, setConfigsPc]
   );
