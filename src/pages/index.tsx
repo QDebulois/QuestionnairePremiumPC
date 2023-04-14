@@ -26,8 +26,8 @@ function Home() {
   const [cardConfigPc, setCardConfigPc] = useState<CardConfingPc>(initialCardConfigPc);
 
   const newCardConfig: CardConfingPc = useMemo(() => {
-    return getAdaptedConfig({ formAnswers, formSettings, componentsPc, configsPc });
-  }, [formAnswers, formSettings, componentsPc, configsPc]);
+    return getAdaptedConfig({ formAnswers, formSettings, configsPc });
+  }, [formAnswers, formSettings, configsPc, componentsPc]);
 
   useEffect(() => {
     setCardConfigPc(newCardConfig);

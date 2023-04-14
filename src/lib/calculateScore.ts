@@ -11,7 +11,6 @@ import {
 interface IGetAdaptedConfig {
   formAnswers: FormAnswers;
   formSettings: FormSettings;
-  componentsPc: ComponentCategories;
   configsPc: ConfigPc[];
 }
 
