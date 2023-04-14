@@ -1,8 +1,9 @@
 # QuestionnairePremiumPC
 
-## requierments
+## Requierments
 
-node version >= 18 (Erreurs avec Next.js sinon)
+Node version >= 18 (Erreurs avec Next.js sinon)
+https://nodejs.org/
 
 ## Install
 
@@ -12,4 +13,5 @@ npm install
 
 npm run dev
 
-Le site se lancera sur le port 80 -> http://localhost
+Le site se lancera sur le port 80
+http://localhost
